@@ -27,6 +27,10 @@ class ApplicationController < Sinatra::Base
 
     end
 
+    def valid_book? # Checks if any book params are empty
+      !params[:title].empty? && !params[:author].empty? && !params[:genre].empty? && !params[:summary].empty?
+    end
+
   end
 
 end

@@ -15,7 +15,17 @@ class BooksController < ApplicationController
         else
             redirect "/login"
         end
+    end
 
+    post "/books/new" do
+        if valid_book?
+            @book=Book.new(params)
+            @book.user = current_user
+            @book.save
+            redirect "/books/#{book.id}"
+        else
+            redirect "/books/new"
+        end    
     end
 
 end

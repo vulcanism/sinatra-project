@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     post "/signup" do
         if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
             @user = User.create(params)
+            @user.save
             session[:user_id] = @user.id
             redirect "/home"
         else
