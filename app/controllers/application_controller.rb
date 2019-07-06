@@ -21,7 +21,11 @@ class ApplicationController < Sinatra::Base
 
     def logged_in?
       !!session[:user_id]
-    end   
+    end
+    
+    def valid_username? # Check to ensure username isn't already taken
+
+    end
 
   end
 
