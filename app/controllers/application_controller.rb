@@ -23,8 +23,8 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
     
-    def valid_username? # Check to ensure username isn't already taken
-
+    def valid_username?(username)
+      !User.find_by(:username == username) && !params[:username].empty?
     end
 
     def valid_book? # Checks if any book params are empty
