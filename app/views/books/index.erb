@@ -1,5 +1,15 @@
-<h2>Welcome back, [username]!</h2>
+<h2>Welcome back, <%= current_user.username %>!</h2>
 
 <h3>Your Books</h3>
+
+<% @books.each do |book| %>
+<div>
+<a href="/books/<%= book.id %>"><%= book.title %></a>
+<%= book.author %>
+<%= book.genre %>
+<%= book.summary %>
+</div>
+
+<% end %>
 
 <h3><a href="/books/new">Add new book</a></h3>

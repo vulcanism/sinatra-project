@@ -28,4 +28,13 @@ class BooksController < ApplicationController
         end    
     end
 
+    get "/books/:id" do
+        if logged_in?
+            @book=Book.find_by_id(params[:id])
+            erb :"/books/show"
+        else
+            redirect "/login"
+        end
+    end
+
 end
