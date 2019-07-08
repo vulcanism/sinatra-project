@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
     
-    def valid_username?(username)
+    def valid_username?(username) # Checks if username is taken
       !User.find_by(:username == username) && !params[:username].empty?
     end
 
