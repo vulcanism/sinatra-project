@@ -51,7 +51,13 @@ class BooksController < ApplicationController
     end
 
     patch "/books/:id" do
-
+        @book=Book.find_by_id(params[:id])
+        if valid_book?
+            @book.update(title: params[:title], author: params[:author], genre: params[:genre], summary: params[:summary]
+            redirect "/books/#{@book.id}"
+        else
+            "/books/#{@book.id}/edit"
+        end
     end
 
 end
