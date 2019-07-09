@@ -22,7 +22,7 @@ class BooksController < ApplicationController
             @book=Book.new(params)
             @book.user = current_user
             @book.save
-            redirect "/books/#{book.id}"
+            redirect "/books/#{@book.id}"
         else
             redirect "/books/new"
         end    
