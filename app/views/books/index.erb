@@ -5,11 +5,18 @@
 <% @books.each do |book| %>
 <div>
 <a href="/books/<%= book.id %>"><%= book.title %></a>
+<br>
 <%= book.author %>
+<br>
 <%= book.genre %>
+<br>
 <%= book.summary %>
+<br>
+<br>
 </div>
 
 <% end %>
 
 <h3><a href="/books/new">Add new book</a></h3>
+
+<p><a href="/logout">Log Out</a></p>
