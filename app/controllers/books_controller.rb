@@ -53,11 +53,23 @@ class BooksController < ApplicationController
     patch "/books/:id" do
         @book=Book.find_by_id(params[:id])
         if valid_book?
-            @book.update(title: params[:title], author: params[:author], genre: params[:genre], summary: params[:summary]
+            @book.update(title: params[:title], author: params[:author], genre: params[:genre], summary: params[:summary])
             redirect "/books/#{@book.id}"
         else
             "/books/#{@book.id}/edit"
         end
+    end
+
+    delete "/books/:id/delete" do
+        if logged_in?
+            @book=Book.find_by_id(params[:id])
+            if @book && @book.user == current_user
+                @book.destroy
+            end
+            redirect "/home"
+        else
+            redirect "/login"
+        end    
     end
 
 end
