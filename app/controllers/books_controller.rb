@@ -56,7 +56,7 @@ class BooksController < ApplicationController
             @book.update(title: params[:title], author: params[:author], genre: params[:genre], summary: params[:summary])
             redirect "/books/#{@book.id}"
         else
-            "/books/#{@book.id}/edit"
+            redirect "/books/#{@book.id}/edit"
         end
     end
 
