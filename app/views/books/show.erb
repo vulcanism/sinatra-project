@@ -7,8 +7,10 @@
 
 <a href="/books/<%= @book.id %>/edit">Edit Book</a>
 <br>
+<br>
 <form method="post" action="/books/<%= @book.id %>/delete">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="Delete Book">
+<br>
 <br>
 <a href="/home">View All Books</a>

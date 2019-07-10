@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     post "/signup" do
         if valid_username?(params[:username]) && !params[:email].empty? && !params[:password].empty?
-            @user = User.create(params)
+            @user = User.new(params)
             @user.save
             session[:user_id] = @user.id
             redirect "/home"
@@ -28,12 +28,13 @@ class UsersController < ApplicationController
     end
 
     post "/login" do
-        @user = User.find_by(:username == params[:username])
+        @user = User.find_by(:username => params[:username])
+
         if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user_id
-            redirect "/home"
+            session[:user_id] = @user.id
+            redirect "/home"            
         else
-            redirect "/login"
+            redirect "/"
         end    
     end   
     
