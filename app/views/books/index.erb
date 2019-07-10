@@ -4,15 +4,19 @@
 
 <% @books.each do |book| %>
 <div>
+<br>
 <a href="/books/<%= book.id %>"><%= book.title %></a>
 <br>
-<%= book.author %>
+<b>Author: </b><%= book.author %>
 <br>
-<%= book.genre %>
+<b>Genre: </b><%= book.genre %>
 <br>
-<%= book.summary %>
+<b>Summary: </b><%= book.summary %>
+<br>
+<i>Added by <%= book.user.username %></i>
 <br>
 <br>
+<hr>
 </div>
 
 <% end %>
