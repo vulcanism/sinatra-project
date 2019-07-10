@@ -43,7 +43,7 @@ class BooksController < ApplicationController
             if @book && @book.user == current_user
                 erb :"/books/edit"
             else
-                redirect "/books/index"
+                redirect "/home"
             end
         else
             redirect "/login"
