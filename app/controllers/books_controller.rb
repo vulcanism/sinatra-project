@@ -24,6 +24,7 @@ class BooksController < ApplicationController
             @book.save
             redirect "/books/#{@book.id}"
         else
+            flash[:error] = "Please ensure all parameters are filled in."
             redirect "/books/new"
         end    
     end
