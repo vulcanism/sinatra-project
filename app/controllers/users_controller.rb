@@ -37,7 +37,12 @@ class UsersController < ApplicationController
             flash[:error] = "Username or password is invalid, please try again."
             redirect "/login"
         end    
-    end   
+    end
+    
+    get "/users/:slug" do
+        @user = User.find_by_slug(params[:slug])
+        erb :"/users/collection"
+    end
     
     get "/logout" do
         session.clear

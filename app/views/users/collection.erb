@@ -1,1 +1,15 @@
-<h2>Your Collectin</h2>
+<h2>Your Collection</h2>
+
+<% @user.books.each do |book| %>
+<br>
+<a href="/books/<%= book.id %>"><%= book.title %></a>
+<br>
+<b>Author: </b><%= book.author %>
+<br>
+<b>Genre: </b><%= book.genre %>
+<br>
+<b>Summary: </b><%= book.summary %>
+<br>
+<br>
+<h3><a href="/books/new">Add new book</a></h3>
+<% end %>
