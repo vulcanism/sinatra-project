@@ -56,6 +56,7 @@ class BooksController < ApplicationController
             @book.update(title: params[:title], author: params[:author], genre: params[:genre], summary: params[:summary])
             redirect "/books/#{@book.id}"
         else
+            flash[:error] = "Please ensure all parameters are filled in."
             redirect "/books/#{@book.id}/edit"
         end
     end

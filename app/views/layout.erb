@@ -16,6 +16,10 @@
   <body>
     <div class="wrapper">
 
+        <% if flash[:error] %>
+          <p><%= flash[:error] %></p>
+        <% end %>
+
         <%= yield %>
 
       <footer class="branding">
