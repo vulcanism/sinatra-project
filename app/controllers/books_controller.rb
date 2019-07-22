@@ -44,7 +44,7 @@ class BooksController < ApplicationController
             if @book && @book.user == current_user
                 erb :"/books/edit"
             else
-                redirect "/home"
+                redirect "/error"            
             end
         else
             redirect "/login"
@@ -67,11 +67,17 @@ class BooksController < ApplicationController
             @book=Book.find_by_id(params[:id])
             if @book && @book.user == current_user
                 @book.destroy
+            else
+                redirect "/error"
             end
             redirect "/home"
         else
             redirect "/login"
         end    
+    end
+
+    get "/error" do
+        erb :"/books/error"
     end
 
 end
